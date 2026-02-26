@@ -1,6 +1,6 @@
 # Elements Code
 
-encoding text into numbers using periodic table element positions.
+Encoding text into numbers using periodic table element positions.
 
 ## Idea
 
