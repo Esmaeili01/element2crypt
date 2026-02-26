@@ -39,7 +39,7 @@ class Elements :
         return choice[randint(0,choice_len-1)]
 
     
-    def encrypt(self , text : str) : 
+    def encode(self , text : str) : 
         text = text.lower()
         size = len(text)
         cipher = []
@@ -49,7 +49,7 @@ class Elements :
 
         return cipher
     
-    def decrypt(self , cipher : list):
+    def decode(self , cipher : list):
         text = ""
         for i in cipher : 
             text += self.ELEMENTS[i-1][0]

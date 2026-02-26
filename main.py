@@ -2,8 +2,8 @@ from elements import Elements
 
 t = "abcdef"
 x = Elements()
-c = x.encrypt(t)
+c = x.encode(t)
 print(c)
-v = x.decrypt(c)
+v = x.decode(c)
 print(v)
 
