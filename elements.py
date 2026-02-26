@@ -1,6 +1,6 @@
 from random import randint
 
-class Element : 
+class Elements : 
     def __init__(self) : 
 
         self.ELEMENTS = (
@@ -36,7 +36,6 @@ class Element :
                 choice.append(i+1)
                 choice_len += 1
 
-        print(choice)
         return choice[randint(0,choice_len-1)]
 
     
@@ -57,10 +56,3 @@ class Element :
         
         return text
     
-t = "abcdefghijklmnopqrstuvwxyz"
-x = Element()
-c = x.encrypt(t)
-print(c)
-v = x.decrypt(c)
-print(v)
-
