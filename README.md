@@ -1,3 +1,3 @@
-# Elements to Cryptography
+# Elements Code
 
-this Cryptography method is based on Periodic Table of Elements.
+based on Periodic Table of Elements.
