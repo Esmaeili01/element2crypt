@@ -1,7 +1,7 @@
 from random import randint
 
-class Periodic : 
-    def __init__(self , text : str) : 
+class Element : 
+    def __init__(self) : 
 
         self.ELEMENTS = (
             'h', 'he',
@@ -26,49 +26,41 @@ class Periodic :
             'j', 'q'
         )
         self.el_size = 120 
-        self.text = text.lower()
-        self.text_size = len(text)
     
-    def search(self , pair : str):
-        choices = [] 
-        for i in range(self.el_size) : 
-            if pair == self.ELEMENTS[i] : 
-                choices.append(i+1)
-                break
-        
-        first_letter = []
-        second_letter = []
-        for i in range(self.el_size) : 
-            if pair[0] == self.ELEMENTS[i][0] : 
-                first_letter.append(i+1)
-            if len(pair) == 2 : 
-                if pair[1] == self.ELEMENTS[i][0] : 
-                    second_letter.append(i+1)
-
-        if first_letter or second_letter : 
-            for i in first_letter : 
-                if len(pair) == 2 :  
-                    for j in second_letter : 
-                        choices.append((i,j))
-                else : 
-                    choices.append(i)
-
-        return choices[randint(0 , len(choices)-1)]
     
-    def encrypt(self) : 
+    def search(self , letter : str):
+        choice = []
+        choice_len = 0
+        for i in range(self.el_size) : 
+            if self.ELEMENTS[i][0] == letter : 
+                choice.append(i+1)
+                choice_len += 1
+
+        print(choice)
+        return choice[randint(0,choice_len-1)]
+
+    
+    def encrypt(self , text : str) : 
+        text = text.lower()
+        size = len(text)
         cipher = []
-        for i in range(0,self.text_size , 2):
-            temp = self.search(self.text[i:i+2])
-            if type(temp) == int : 
-                cipher.append(temp)
-            else : 
-                cipher += temp
+        for i in range(size):
+            temp = self.search(text[i])
+            cipher.append(temp)
 
         return cipher
     
-t = "hel"
-x = Periodic(t)
-c = x.encrypt()
-
+    def decrypt(self , cipher : list):
+        text = ""
+        for i in cipher : 
+            text += self.ELEMENTS[i-1][0]
+        
+        return text
+    
+t = "abcdefghijklmnopqrstuvwxyz"
+x = Element()
+c = x.encrypt(t)
 print(c)
+v = x.decrypt(c)
+print(v)
 
